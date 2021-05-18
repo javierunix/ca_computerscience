@@ -24,3 +24,14 @@ question = "Do you like napolitan pizza?"
 # which we’ll call answer. 
 #For now, assign this variable to an empty string.
 answer = ""
+
+#               ******* Generating a random number *********
+
+
+# Step 4
+import random 
+
+# Step 5
+# create a variable to store the randomly generated value.
+random_number = random.randint(1, 9) # generate a random integer, between 1 and 9 (inclusive)
+print(random_number)
