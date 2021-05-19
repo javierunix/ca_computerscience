@@ -1,4 +1,4 @@
-weight = float(input('Introduce the weight (in pounds of the package: ')) # Define a variable called weight and set it to any number
+weight = float(input('Introduce the weight (in pounds) of the package: ')) # Define a variable called weight and set it to any number
 
 # ********* Ground shipping ***************
 
@@ -40,8 +40,8 @@ cheapest = min(standard_cost, drone_cost, premium_cost) # select the minimum of 
 
 # print a message according with recommended shipping method
 if cheapest == standard_cost:
-    print('The recommended shipping method is standard, with a cost of %.2f $.' %cheapest)
+    print('The recommended shipping method is standard, with a cost of %.2f$.' %cheapest)
 elif cheapest == drone_cost:
-    print('The recommended shipping method is drone, with a cost of %.2f $.' %cheapest)
+    print('The recommended shipping method is drone, with a cost of %.2f$.' %cheapest)
 elif cheapest == premium_cost:
-    print('The recommended shipping method is premium, with a cost of %.2f $.' %cheapest)
+    print('The recommended shipping method is premium, with a cost of %.2f$.' %cheapest)
