@@ -98,6 +98,7 @@ name = "Nerea"
 # then the Magic 8-Ball cannot provide a fortune, otherwise, the fabric of reality is at risk!
 
 question = "do you like napolitan pizza?"
+question = ""
 if question == "":
     print("Hey, user, you have to privide a question")
 else:
