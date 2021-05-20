@@ -32,8 +32,7 @@ def delete_starting_evens(lst):
         if my_list[i] % 2 == 0: # if the element is even
             my_list = my_list[i+1:] # the list is shorten 
         else:
-            break
-    
+            break  #get out the loop once the first even element has been found
     return(my_list)
             
         
