@@ -26,15 +26,34 @@ def add_greetings(names):
 # For example if lst started as [4, 8, 10, 11, 12, 15], then delete_starting_evens(lst) should return [11, 12, 15].
 
 def delete_starting_evens(lst):
-    my_list = lst # copy in a new list the argument, in order to avoid conflict between local and global variables
-    i = 0 # create index counter
-    while i < len(my_list): # iterate over list
-        if my_list[i] % 2 == 0: # if the element is even
-            my_list = my_list[i+1:] # the list is shorten 
-        else:
-            break  #get out the loop once the first even element has been found
-    return(my_list)
+    while (len(lst) > 0 and lst[0] % 2 == 0):
+        lst = lst[1:]
+    return(lst)
             
         
-print(delete_starting_evens([4, 8, 10, 11, 12, 15]))
-print(delete_starting_evens([4, 8, 10, 14, 18, 20]))
+# print(delete_starting_evens([4, 8, 10, 11, 12, 15]))
+# print(delete_starting_evens([4, 8, 10, 14, 18, 20]))
+
+
+# Create a function named odd_indices() that has one parameter named lst.
+# The function should create a new empty list and add every element from lst that has an odd index. 
+# The function should then return this new list.
+
+def odd_indices(lst):
+    new_list = [] 
+    for i in range(1, len(lst), 2): # iterate from index 1, in 2 position steps 
+        new_list.append(lst[i])
+    return new_list
+# print(odd_indices([4, 3, 7, 10, 11, -2]))
+
+# Create a function named exponents() that takes two lists as parameters named bases and powers. 
+# Return a new list containing every number in bases raised to every number in powers.
+
+def exponents(bases, powers): # the function accepts as arguments two lists: bases and powers
+    new_list = [] # new list to store the exponents
+    for base in bases: # iterate through bases
+        for power in powers: # iterate through powers
+            new_list.append(base ** power) # append to new list the exponential number
+    return new_list
+print(exponents([2, 3, 4], [1, 2, 3])
+)
