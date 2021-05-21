@@ -12,12 +12,12 @@ class Menu():
 
 	def __init__(self, name, items, start_time, end_time):
 		self.name = name
-		self.items =items
+		self.items = items
 		self.start_time = start_time
 		self.end_time = end_time
 
 	def __repr__(self):
-		return("%s available from %s to %s." %(self.name, self.start_time, self.end_time))
+		return("%s available from %d to %d." %(self.name, self.start_time, self.end_time))
 
 	def calculate_bill(self, purchased_items): # parameters: self and a list with items
 		total_sum = 0 # initialize total_sum
@@ -28,30 +28,32 @@ class Menu():
 # create first menu
 brunch = Menu('brunch menu', {
   'pancakes': 7.50, 'waffles': 9.00, 'burger': 11.00, 'home fries': 4.50, 'coffee': 1.50, 'espresso': 3.00, 'tea': 1.00, 'mimosa': 10.50, 'orange juice': 3.50
-}, '11 am', '4 pm')
+}, 11, 16)
 
 # create second menu
 
 early_bird = Menu('early bird menu', {
   'salumeria plate': 8.00, 'salad and breadsticks (serves 2, no refills)': 14.00, 'pizza with quattro formaggi': 9.00, 'duck ragu': 17.50, 'mushroom ravioli (vegan)': 13.50, 'coffee': 1.50, 'espresso': 3.00,
-}, '3 pm', '6 pm')
+}, 15, 18)
 
 # create third menu
 dinner = Menu('dinner menu', {
   'crostini with eggplant caponata': 13.00, 'ceaser salad': 16.00, 'pizza with quattro formaggi': 11.00, 'duck ragu': 19.50, 'mushroom ravioli (vegan)': 13.50, 'coffee': 2.00, 'espresso': 3.00,
-}, '5 pm', '11 pm')
+}, 17, 23)
 
 # create kids menu
 
 kids = Menu('kids menu', {
   'chicken nuggets': 6.50, 'fusilli with wild mushrooms': 12.00, 'apple juice': 3.00
-}, '11 am', '9 pm')
+}, 11, 21)
 
 # print(brunch.calculate_bill(['pancakes', 'home fries', 'coffee']))
 # print(early_bird.calculate_bill(['salumeria plate', 'mushroom ravioli (vegan)']))
 
 # let’s create a Franchise class.
 
+# Give Franchise an .available_menus() method that takes in a time parameter 
+# and returns a list of the Menu objects that are available at that time.
 class Franchise():
 
 	def __init__(self, address, menus):
@@ -62,10 +64,17 @@ class Franchise():
 		return("our address is %s" %self.address)
 
 	def available_menus(self, time):
-		pass
-
+		list_available_menus = [] # initialize the list
+		for menu in self.menus: # iterate over the menus list
+			if menu.end_time >= time >= menu.start_time: # if time specified is between start and end
+				list_available_menus.append(menu.name) # add to the list the name of the menu
+		return list_available_menus
+			
 flagship_store = Franchise("1232 West End Road", [brunch, early_bird, dinner, kids])
 new_installment = Franchise("12 East Mulberry Street", [brunch, early_bird, dinner, kids])
 
-print(flagship_store)
-print(new_installment)
+# print(flagship_store)
+# print(new_installment)
+# print(flagship_store.available_menus(12))
+# print(flagship_store.available_menus(17))
+
