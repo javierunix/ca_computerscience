@@ -158,4 +158,47 @@ total_sales = 0
 for sale in sales:
     sale_float = float(sale.strip('$')) # strip the $ sign and cast to float
     total_sales += sale_float
-print("Total sales today: %.2f" %total_sales)
+# print("Total sales today: %.2f" %total_sales)
+
+# print(thread_sold)
+# define an empty list thread_sold_split.
+thread_sold_split = []
+
+# Next, iterate through thread_sold. For each item, check if it is a single color or multiple colors. 
+# If it is a single color, append that color to thread_sold_split.
+
+# If it is multiple colors, first split the string around the & character and then add each color indivudally to thread_sold_split.
+for color in thread_sold:
+    if "&" in color: # multiple colors
+        color_sublist = color.split("&")
+        for individual_color in color_sublist:
+            thread_sold_split.append(individual_color)
+    else:
+        thread_sold_split.append(color)
+
+# print(thread_sold_split)
+
+# Define a function called color_count that takes one argument, color. 
+# The function should iterate through thread_sold_split and count the number 
+# of times the item is equal to argument, color. Then, it should return this count.
+
+def color_count(name):
+    count=0
+    for color in thread_sold_split:
+        if color ==  name:
+            count += 1
+    return count
+
+# print(color_count("white"))
+
+# Define a list called colors that stores all of the colored threads that Thread Shed offers:
+colors = ['red','yellow','green','white','black','blue','purple']
+
+# iterate through thread_sold_split and print a sentence 
+# that says how many threads of each color were sold today.
+for unique_color in colors:
+    count = 0
+    for color in thread_sold_split:
+        if color == unique_color:
+            count +=1
+    print('%d threads of %s color were sold today.' %(count, unique_color))
