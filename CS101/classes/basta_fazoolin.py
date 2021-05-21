@@ -47,8 +47,8 @@ kids = Menu('kids menu', {
   'chicken nuggets': 6.50, 'fusilli with wild mushrooms': 12.00, 'apple juice': 3.00
 }, '11 am', '9 pm')
 
-print(brunch.calculate_bill(['pancakes', 'home fries', 'coffee']))
-print(early_bird.calculate_bill(['salumeria plate', 'mushroom ravioli (vegan)']))
+# print(brunch.calculate_bill(['pancakes', 'home fries', 'coffee']))
+# print(early_bird.calculate_bill(['salumeria plate', 'mushroom ravioli (vegan)']))
 
 # let’s create a Franchise class.
 
@@ -57,3 +57,15 @@ class Franchise():
 	def __init__(self, address, menus):
 		self.address = address
 		self.menus = menus
+
+	def __repr__(self):
+		return("our address is %s" %self.address)
+
+	def available_menus(self, time):
+		pass
+
+flagship_store = Franchise("1232 West End Road", [brunch, early_bird, dinner, kids])
+new_installment = Franchise("12 East Mulberry Street", [brunch, early_bird, dinner, kids])
+
+print(flagship_store)
+print(new_installment)
