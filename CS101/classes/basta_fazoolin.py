@@ -49,3 +49,11 @@ kids = Menu('kids menu', {
 
 print(brunch.calculate_bill(['pancakes', 'home fries', 'coffee']))
 print(early_bird.calculate_bill(['salumeria plate', 'mushroom ravioli (vegan)']))
+
+# let’s create a Franchise class.
+
+class Franchise():
+
+	def __init__(self, address, menus):
+		self.address = address
+		self.menus = menus
