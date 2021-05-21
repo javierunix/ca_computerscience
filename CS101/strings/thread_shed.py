@@ -137,4 +137,25 @@ for daily_transaction in daily_transactions_split: # iterate over the first list
 
 # print(transactions_clean[0])
 # Create three empty lists. customers, sales, and thread_sold. 
+customers = []
+sales = []
+thread_sold = []
 
+# Now, iterate through transactions_clean and for each transaction:
+for transaction_clean in transactions_clean:
+    customers.append(transaction_clean[0]) # Append the customers name to customers.
+    sales.append(transaction_clean[1]) # Append the amount of the sale to sales.
+    thread_sold.append(transaction_clean[2]) # Append the threads sold to thread_sold.
+
+# print(customers)
+# print(sales)
+# print(thread_sold)
+
+# First, define a variable called total_sales and set it equal to 0.
+total_sales = 0
+# Iterate through sales and for each item, strip off the $, 
+# set it equal to a float, and add it to total_sales
+for sale in sales:
+    sale_float = float(sale.strip('$')) # strip the $ sign and cast to float
+    total_sales += sale_float
+print("Total sales today: %.2f" %total_sales)
