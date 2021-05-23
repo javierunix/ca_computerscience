@@ -80,3 +80,68 @@ class SpecialPotatoSalad(PotatoSalad):
 
     self.raisins = raisins # definining the fourth argument
 
+# ********************** Interfaces *********************
+
+# When two classes have the same methods name and the same attributes it is said 
+# that these classes implement the same interface.
+# In python an interface ussually refers to the names of the methods and the arguments they take.
+
+# 1. Define a clase
+
+class InsurancePolicy:
+  def __init__(self, price_of_item):
+    self.price_of_insured_item = price_of_item
+
+# 2. Define a subclass
+class VehicleInsurance(InsurancePolicy):
+  # Give VehicleInsurance a .get_rate() method that takes self as a parameter. Return .001 multiplied by the price of the vehicle.
+  def get_rate(self):
+    return 0.001 * self.price_of_insured_item
+
+# 3. Define another subclass
+# Give VehicleInsurance a .get_rate() method that takes self as a parameter. Return .00005 multiplied by the price of the vehicle.
+class HomeInsurance(InsurancePolicy):
+  def get_rate(self):
+    return 0.00005 * self.price_of_insured_item
+
+
+# ********************** Polimorphism *********************
+
+# Polymorphism is the term used to describe the same syntax (or method) 
+# doing different actions depending on the type of data.
+
+# ******************** Dunder Methods **********************
+
+
+# Define class Atoms
+# Give Atom a .__add__(self, other) method that returns 
+# a Molecule with the two Atoms together in a list.
+
+class Atom():
+
+	def __init__(self, label):
+		self.label = label
+
+	def __add__(self, other):
+		return Molecule([self, other])
+
+# Define classes Molecules
+class Molecule():
+	def __init__(self, atoms):
+		if type(atoms) is list:
+			self.atoms = atoms
+
+# Give LawFirm a .__len__() method that will return the number of lawyers in the law firm.
+# Give LawFirm a .__contains__() method that takes two parameters: self and lawyer and checks to see if lawyer is in self.lawyers.
+class LawFirm:
+  def __init__(self, practice, lawyers):
+    self.practice = practice
+    self.lawyers = lawyers
+
+  def __len__(self):
+    return len(self.lawyers)
+
+  def __contains__(self, lawyer):
+    return lawyer in self.lawyers
+    
+d_and_p = LawFirm("Injury", ["Donelli", "Paderewski"])
