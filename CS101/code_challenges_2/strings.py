@@ -38,5 +38,46 @@ def count_multi_char_x(word, x):
 	# the function split() create a list when the fragments created when the word is splitted using x as breakpoint
 	return len(word.split(x)) - 1  # the number of break points is fragments minus 1
 
-print(count_multi_char_x("mississippi", "iss"))
-print(count_multi_char_x("apple", "pp"))
+# print(count_multi_char_x("mississippi", "iss"))
+# print(count_multi_char_x("apple", "pp"))
+
+# ********************** 4 *****************************
+
+# Write a function named substring_between_letters that takes a string named word, 
+# a single character named start, and another character named end. 
+# This function should return the substring between the first occurrence of start and end in word. 
+# If start or end are not in word, the function should return word.
+
+def substring_between_letters(word, start, end):
+	
+	start_position = word.find(start) # store in this variable the first ocurrence of start (-1 if not present)
+	end_position = word.find(end) # store in this variable the first ocurrence of end (-1 if not present)
+
+	if start_position == -1 or end_position == -1: # start or end character are not presente
+		
+		return word # return complete word
+	
+	return word[start_position+1:end_position] # otherwise, return substring between start and end
+
+# print(substring_between_letters("apple", "p", "e"))
+# print(substring_between_letters("apple", "p", "c"))
+
+
+# ********************** 5 *****************************
+
+# Create a function called x_length_words that takes a string named sentence and an integer named x as parameters. 
+# This function should return True if every word in sentence has a length greater than or equal to x.
+
+def x_length_words(sentence, x):
+	
+	words_list = sentence.split() # split the sentence into words, using blank spaces as break points
+
+	for word in words_list: # loop over the list of words
+		if len(word) < x:
+			return False # if there is one word shorter than x return false
+
+	return True # otherwise return true
+
+print(x_length_words("i like apples", 2))
+print(x_length_words("he likes apples", 2))
+
