@@ -74,8 +74,73 @@ def max_key(my_dictionary):
 
 	return max_key
 
-print(max_key({1:100, 2:1, 3:4, 4:10}))
-print(max_key({"a":100, "b":10, "c":1000}))
+# print(max_key({1:100, 2:1, 3:4, 4:10}))
+# print(max_key({"a":100, "b":10, "c":1000}))
 
+# ********************** 6 *****************************
 
+# Write a function named word_length_dictionary that takes a list of strings named words as a parameter. 
+# The function should return a dictionary of key/value pairs where every key is a word in words and every value is the length of that word.
 
+def word_length_dictionary(words):
+	
+	my_dict = {} # create and initialize dictionary
+	for word in words:
+		my_dict[word] = len(word) # add word as key and length of word as value
+
+	return my_dict
+
+# print(word_length_dictionary(["apple", "dog", "cat"]))
+# print(word_length_dictionary(["a", ""]))
+
+# ********************** 7 *****************************
+
+# Write a function named frequency_dictionary that takes a list of elements named words as a parameter. 
+# The function should return a dictionary containing the frequency of each element in words.
+
+def frequency_dictionary(words):
+	
+	my_dict = {} # create and initialize dictionary
+	for word in words:
+		if word not in my_dict:
+			my_dict[word] = 0 # initialize as 0
+		my_dict[word] += 1 #if word already in dict increment count by 1
+	return my_dict
+
+# print(frequency_dictionary(["apple", "apple", "cat", 1]))
+# print(frequency_dictionary([0,0,0,0,0]))
+# ********************** 8 *****************************
+
+# Create a function named unique_values that takes a dictionary named my_dictionary as a parameter. 
+# The function should return the number of unique values in the dictionary.
+
+def unique_values(my_dictionary):
+	unique_values = []
+
+	for value in my_dictionary.values(): # loop over values
+		if value not in unique_values: # if value not already in list
+			unique_values.append(value) # append the value
+	return len(unique_values)
+
+# print(unique_values({0:3, 1:1, 4:1, 5:3}))
+# print(unique_values({0:3, 1:3, 4:3, 5:3}))
+
+# ********************** 9 *****************************
+
+# Create a function named count_first_letter that takes a dictionary named names as a parameter. 
+# names should be a dictionary where the key is a last name and the value is a list of first names.
+
+def count_first_letter(names):
+
+	my_dict = {}
+
+	for key, value in names.items():
+		first_letter = key[0]
+		if first_letter not in my_dict:
+			my_dict[first_letter] = 0
+		my_dict[first_letter] += len(value)
+
+	return my_dict
+
+print(count_first_letter({"Stark": ["Ned", "Robb", "Sansa"], "Snow" : ["Jon"], "Lannister": ["Jaime", "Cersei", "Tywin"]}))
+print(count_first_letter({"Stark": ["Ned", "Robb", "Sansa"], "Snow" : ["Jon"], "Sannister": ["Jaime", "Cersei", "Tywin"]}))
