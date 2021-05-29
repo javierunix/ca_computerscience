@@ -1,30 +1,45 @@
+# We'll be using our Node class
 class Node:
-  def __init__(self, value, link_node=None):
+  def __init__(self, value, next_node=None):
     self.value = value
-    self.link_node = link_node
+    self.next_node = next_node
     
-  def set_link_node(self, link_node):
-    self.link_node = link_node
-    
-  def get_link_node(self):
-    return self.link_node
-  
   def get_value(self):
     return self.value
+  
+  def get_next_node(self):
+    return self.next_node
+  
+  def set_next_node(self, next_node):
+    self.next_node = next_node
 
-# Add your code below:
+# Our LinkedList class
+class LinkedList:
+  def __init__(self, value=None):
+    self.head_node = Node(value)
+  
+  def get_head_node(self):
+    return self.head_node
+  
+# Add your insert_beginning and stringify_list methods below:
+  def insert_beginning(self, new_value):
+    self.new_node = Node(new_value)
+    self.new_node.next_node = self.head_node
+    self.head_node = self.new_node
 
-yacko = Node(value='likes to yak')
-wacko = Node(value='has a penchant for hoarding snacks')
-dot = Node(value='enjoys spending time in movie lots')
-
-yacko.set_link_node(dot)
-dot.set_link_node(wacko)
-
-dots_data = yacko.get_link_node().get_value()
-wackos_data = dot.get_link_node().get_value()
-yackos_data = yacko.get_value()
-
-print(dots_data)
-print(wackos_data)
-print(yackos_data)
+  def stringify_list(self):
+    node_list = []
+    while True:
+      node_list.append(self.head_node.value)
+      if self.head_node.next_node == None:
+        break
+      else:  
+        self.head_node = self.head_node.next_node
+    return node_list
+      
+# Test your code by uncommenting the statements below - did your list print to the terminal?
+ll = LinkedList(5)
+ll.insert_beginning(70)
+ll.insert_beginning(5675)
+ll.insert_beginning(90)
+print(ll.stringify_list())
