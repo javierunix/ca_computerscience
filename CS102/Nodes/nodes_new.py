@@ -50,9 +50,28 @@ class LinkedList:
                 current_node = current_node.next_node
         return my_list
   
+    def remove_node(self, value_to_remove): 
+        current_node = self.head_node
+
+        if current_node.get_value() == value_to_remove: # if the value to remove is the current node
+            self.head_node = current_node.get_next_node() # set the following node as new head
+
+        else:
+            while current_node:
+                next_node = current_node.get_next_node() # find the following node
+                if next_node.get_value() == value_to_remove: # if the following node is the node to remove
+                    current_node.set_next_node(next_node.get_next_node()) # set the of the link of the current node to the node after the next node
+                    break
+                else:
+                    current_node = next_node # in other case, set the next node as the new current.
+
 ll = LinkedList(5)
+
 ll.insert_beginning(70)
 ll.insert_beginning(5675)
 ll.insert_beginning(90)
-print(ll.stringify_list())
 
+print(ll.stringify_list())
+ll.remove_node(5675)
+
+print(ll.stringify_list())
