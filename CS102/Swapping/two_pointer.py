@@ -91,9 +91,13 @@ class LinkedList:
         slow_node = self.head_node
 
         # loop until the next_node of fast is None
+        count = 0
         while fast_node.get_next_node() != None:
-            slow_node = slow_node.get_next_node() # the slow node moves fordward one position
-            fast_node = fast_node.get_next_node().get_next_node() # the fast node moves two positions in every step
+            fast_node = fast_node.get_next_node() # the fast node moves one position in every step
+            if count % 2 == 0:
+                slow_node = slow_node.get_next_node() # the slow node moves on position every to steps
+            count += 1
+
         # when the fast node has reached the middle of the list, the slow one is on the middle
         return slow_node.get_value()
 
