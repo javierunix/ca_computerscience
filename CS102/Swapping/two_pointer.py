@@ -84,11 +84,23 @@ class LinkedList:
         # return the value of the back node
         return back_node.get_value()
 
+    def get_middle_element(self):
+
+        # define two nodes, fast and slow
+        fast_node = self.head_node
+        slow_node = self.head_node
+
+        # loop until the next_node of fast is None
+        while fast_node.get_next_node() != None:
+            slow_node = slow_node.get_next_node() # the slow node moves fordward one position
+            fast_node = fast_node.get_next_node().get_next_node() # the fast node moves two positions in every step
+        # when the fast node has reached the middle of the list, the slow one is on the middle
+        return slow_node.get_value()
+
 ll = LinkedList(5)
-
-ll.insert_beginning(70)
-ll.insert_beginning(5675)
-ll.insert_beginning(90)
-
+for i in range(10):
+    ll.insert_beginning(i)
 print(ll.stringify_list())
 print(ll.get_nth_last_node(4))
+print(ll.get_middle_element())
+
