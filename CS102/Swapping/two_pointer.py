@@ -65,58 +65,30 @@ class LinkedList:
                 else:
                     current_node = next_node # in other case, set the next node as the new current.
 
-    def swap_nodes(input_list, value1, value2):
-        node1 = input_list.head_node
-        node2 = input_list.head_node
-        node1_prev = None # set the previous node to None
-        node2_prev = None 
+    # this is my implementation of the two pointers algorith
+    def get_nth_last_node(self, n):
 
-        while node1 is not None:
-            if node1.get_value() == value1:
-                break 
-            node1_prev = node1 # set the previous node to be the current one
-            node1 = node1.get_next_node() # set the current node to be the next
+        # we define two nodes: ahead and back
+        back_node = self.head_node 
+        ahead_node = self.head_node 
+        
+        # move fordward n position the ahead node in relation to back
+        for i in range(1, n):
+            ahead_node = ahead_node.get_next_node()
 
-        while node2 is not None:
-            if node2.get_value() == value2:
-                break
-            node2_prev = node2
-            node2 = node2.get_next_node()
+        # loop until the next_node of ahead is None
+        while ahead_node.get_next_node() != None:
+            # one step fordward in back and ahead node
+            back_node = back_node.get_next_node() # 
+            ahead_node = ahead_node.get_next_node()
+        # return the value of the back node
+        return back_node.get_value()
 
-        if node1_prev is None:
-            input_list.head_node = node2
-        else:
-            node1_prev.set_next_node(node2)
+ll = LinkedList(5)
 
-        if node2_prev is None:
-            input_list.head_node = node1
-        else:
-            node2_prev.set_next_node(node1)
+ll.insert_beginning(70)
+ll.insert_beginning(5675)
+ll.insert_beginning(90)
 
-        # updating the nodes' next pointers
-        temp = node1.get_next_node()
-        node1.set_next_node(node2.get_next_node())
-        node2.set_next_node(temp)
-
-        # edge cases
-        if (node1 is None or node2 is None):
-            print("Swap not possible - one or more element is not in the list")
-            return
-
-        if value1 == value2:
-            print("Elements are the same - no swap needed")
-
-# Create a method that returns the nth last element of a singly linked list.
-    def list_nth_last(linked_list, n):
-        linked_list_as_list = []
-        current_node = linked_list.head_node
-        while current_node:
-            linked_list_as_list.append(current_node)
-            current_node = current_node.get_next_node()
-        return linked_list_as_list[len(linked_list_as_list) - n]
-
-ll = LinkedList(0)
-for i in range(10):
-    ll.insert_beginning(i)
 print(ll.stringify_list())
-print(ll.list_nth_last(1).get_value())
+print(ll.get_nth_last_node(4))
