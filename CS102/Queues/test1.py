@@ -1,4 +1,4 @@
-load_file_in_context("queue.py")
+load_file_in_context("main.py")
 
 try:
   Queue
