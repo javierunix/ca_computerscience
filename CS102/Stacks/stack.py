@@ -15,7 +15,7 @@ class Stack:
             print("Adding {} to the pizza stack!".format(value))
             self.size += 1
         else:
-            return("All out of space!")
+            return(print("All out of space!"))
 
     def pop(self):
         if self.size > 0:
@@ -24,7 +24,7 @@ class Stack:
             self.size -= 1
             return item_to_remove.get_value()
         else:
-            return("Sorry, the Stack is totally empty :-(")
+            return(print("Sorry, the Stack is totally empty :-("))
 
     def peek(self):
         if self.size > 0:
@@ -33,16 +33,10 @@ class Stack:
             return("Nothing to see here!")
 
     def has_space(self):
-        if self.limit > self.size:
-            return True
-        else:
-            return False
+        return self.limit > self.size
 
     def is_empty(self):
-        if self.size == 0:
-            return True
-        else:
-            return False
+        return self.size == 0
 
 # Defining an empty pizza stack
 pizza_stack = Stack(6)
