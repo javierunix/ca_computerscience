@@ -47,3 +47,39 @@ def get_input():
             for i in range(len(stacks)): 
                 if user_input == choices[i]:
                     return stacks[i]
+
+
+# ************** Playing the Game **************
+
+num_user_moves = 0 
+
+# the game ends when the right stack is full
+
+while right_stack.get_size() != num_disks:
+    print("\n\n\n...Current Stacks")
+
+    for stack in stacks:
+        print(stack.print_items())
+
+    while True:
+        print("\nWhich stack do you want to move from?\n")
+        from_stack = get_input()
+        print("\nWhich stack do you want to move to?\n")
+        to_stack = get_input()
+
+
+        if from_stack.is_empty(): # if 
+            print("\n\nInvalid Move. Try Again")
+
+        # check if move is valid
+        # if move to an empty stack o move a disk into a larger one
+        elif (to_stack.is_empty()) or (from_stack.peek() < to_stack.peek()):
+            disk = from_stack.pop()
+            to_stack.push(disk)
+            num_user_moves += 1
+            break
+
+        else:
+            print("\n\nInvalid Move. Try Again")
+
+print("\n\nYou Completed the game in %d, and the optimal number of moves is %d." %(num_user_moves, num_optimal_moves))
