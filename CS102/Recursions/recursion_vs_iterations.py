@@ -100,12 +100,12 @@ def find_min(my_list):
 
   return min
 
-find_min([42, 17, 2, -1, 67])
-# -1
-#find_mind([])
-# None
-find_min([13, 72, 19, 5, 86])
-# 5
+# find_min([42, 17, 2, -1, 67])
+# # -1
+# #find_mind([])
+# # None
+# find_min([13, 72, 19, 5, 86])
+# # 5
 
 # 7. *********************** recursive implementation of the minimum function **************************************
 
@@ -118,9 +118,53 @@ def find_min(my_list, my_min = None):
     my_min = my_list[0]
   return find_min(my_list[1:], my_min)
 
-# test cases
-print(find_min([42, 17, 2, -1, 67]) == -1)
-print(find_min([]) == None)
-print(find_min([13, 72, 19, 5, 86]) == 5)
+# # test cases
+# print(find_min([42, 17, 2, -1, 67]) == -1)
+# print(find_min([]) == None)
+# print(find_min([13, 72, 19, 5, 86]) == 5)
+
+# 8. *********************** iterative implementation of the palindrome function **************************************
 
 
+def palindrome_itertative(my_string):
+  while len(my_string) > 1:
+    if my_string[0] != my_string[-1]:
+      return False
+    my_string = my_string[1:-1]
+  return True 
+ 
+palindrome_itertative("abba")
+# True
+palindrome_itertative("abcba")
+# True
+palindrome_itertative("")
+# True
+palindrome_itertative("abcd")
+# False
+
+
+# 9. *********************** recursive implementation of the palindrome function **************************************
+
+def is_palindrome(my_string):
+  if len(my_string) <= 1:
+    return True
+  if my_string[0] != my_string[-1]:
+    return False
+  return is_palindrome(my_string[1:-1])
+
+# print(is_palindrome("abba") == True)
+# print(is_palindrome("abcba") == True)
+# print(is_palindrome("") == True)
+# print(is_palindrome("abcd") == False)
+
+# 10 *********************** recursive implementation of the multiplication function **************************************
+
+def multiplication(num1, num2):
+  if num2 == 1:
+    return num1
+  else:
+    return num1 + multiplication(num1, (num2 - 1))
+
+print(multiplication(3, 7) == 21)
+print(multiplication(5, 5) == 25)
+print(multiplication(0, 4) == 0)
