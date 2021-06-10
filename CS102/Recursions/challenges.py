@@ -28,5 +28,22 @@ def move_to_end(lst, val):
 
 	return result
  
-gemstones = ["Amber", "Sapphire", "Amber", "Jade"]
-print(move_to_end(gemstones, "Amber"))
+# gemstones = ["Amber", "Sapphire", "Amber", "Jade"]
+# print(move_to_end(gemstones, "Amber"))
+
+# **************** Prepend and append to a string ***************
+
+# define a function that accepts two arguments a string and and integer
+# the function should return a copy of the string with n copies of '<' and '>'
+
+def wrap_string(my_string, my_integer):
+	
+	result = "" # create a result varibale and assign to empty string
+	if my_integer <= 0:
+		return my_string
+	result += "<" + wrap_string(my_string, my_integer - 1) + ">"
+	return result
+
+
+wrapped = wrap_string("Pearl", 3)
+print(wrapped)
