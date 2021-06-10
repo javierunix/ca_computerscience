@@ -38,10 +38,18 @@ def move_to_end(lst, val):
 
 def wrap_string(my_string, my_integer):
 	
-	result = "" # create a result varibale and assign to empty string
+	result = "" # create a result variable and assign to empty string
+	
+	# print("breakpoint 1")
+	# print("String: %s\tInteger: %d" %(result, my_integer))
+	
 	if my_integer <= 0:
 		return my_string
 	result += "<" + wrap_string(my_string, my_integer - 1) + ">"
+	
+	# print("breakpoint 2")
+	# print("String: %s\tInteger: %d" %(result, my_integer))
+
 	return result
 
 
