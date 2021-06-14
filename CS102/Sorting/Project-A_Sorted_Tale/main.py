@@ -14,4 +14,3 @@ for book in bookshelf:
     books_list.append([book['title'], book['author']])
 
 print(sorts.bubble_sort(books_list, condition4))
-

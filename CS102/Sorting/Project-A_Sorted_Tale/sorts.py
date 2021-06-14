@@ -1,5 +1,5 @@
 import random
-  
+
 def bubble_sort(arr, condition):
   this_condition = condition
   swaps = 0
