@@ -1,13 +1,13 @@
 import random
-
-def bubble_sort(arr):
-  condition = "arr[idx][1] > arr[idx + 1][1]"
+  
+def bubble_sort(arr, condition):
+  this_condition = condition
   swaps = 0
   sorted = False
   while not sorted:
     sorted = True
     for idx in range(len(arr) - 1):
-      if eval(condition):
+      if eval(this_condition):
         sorted = False
         arr[idx], arr[idx + 1] = arr[idx + 1], arr[idx]
         swaps += 1
