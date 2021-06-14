@@ -18,3 +18,35 @@ def bubble_sort(arr):
 print("Pre-Sort: {0}".format(nums))      
 bubble_sort(nums)
 print("Post-Sort: {0}".format(nums))
+
+def merge_sort(my_list):
+  # when the list is length return the list
+  if len(my_list) <= 1:
+    return my_list
+
+  middle_idx = len(my_list) // 2 # calculate the middle point of the list
+  left_split = my_list[:middle_idx] # first half of the list
+  right_split = my_list[middle_idx:] # second half of the list
+
+  left_sorted = merge_sort(left_split)
+  right_sorted = merge_sort(right_split)
+
+  return merge(left_sorted, right_sorted)
+
+def merge(left, right):
+  result = []
+  while left and right:
+    if left[0] < right[0]:
+      result.append(left[0])
+      left.pop(0)
+    else:
+      result.append(right[0])
+      right.pop(0)
+  if left:
+    result += left
+  elif right:
+    result += right
+  
+  return result
+
+print(merge_sort(nums))
