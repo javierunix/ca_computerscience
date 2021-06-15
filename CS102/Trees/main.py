@@ -20,7 +20,13 @@ class TreeNode:
 
     def traverse(self):
         story_node = self
-        print(story_node.story_piece)
+        while len(story_node.choices) > 0:
+            choice = int(input("Enter 1 or 2 to continue the story: "))
+            while choice not in [1, 2]:
+                choice = int(input("Enter a valid choice 1 or 2: "))
+            story_node.add_child(choice)
+            story_node.choices.pop()
+
 
 
 text_1 = """
@@ -58,4 +64,5 @@ story_root.add_child(choice_b)
 #print(story_root.choices)
 
 story_root.traverse()
+
 
