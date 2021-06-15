@@ -3,7 +3,7 @@
 # print("Once upon a time...")
 
 ######
-# TREENODE CLASS
+# TREE NODE CLASS
 
 # Our TreeNode class will keep track of two things:
 # 1. a portion of the story
@@ -88,7 +88,7 @@ YOU HAVE ESCAPED THE WILDERNESS.
 ######
 # TESTING AREA
 
-story_root = TreeNode(text_1) # assign to this variable the value text_1
+story_root = TreeNode(text_1)  # assign to this variable the value text_1
 choice_a = TreeNode(choice_a_text)
 choice_a_1 = TreeNode(choice_a_1_text)
 choice_a_2 = TreeNode(choice_a_2_text)
@@ -107,11 +107,7 @@ choice_a.add_child(choice_a_2)
 choice_b.add_child(choice_b_1)
 choice_b.add_child(choice_b_2)
 
-
-
 # print(story_root.choices)
 
 story_root.traverse()
 ######
-
-
