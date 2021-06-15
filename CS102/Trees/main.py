@@ -1,11 +1,9 @@
-# user_choice = input("What is your name? ")
-# print(user_choice)
 # print("Once upon a time...")
 
 ######
 # TREE NODE CLASS
 
-# Our TreeNode class will keep track of two things:
+# Our Tree Node class will keep track of two things:
 # 1. a portion of the story
 # 2. the choices that the user does in order to progress the story
 class TreeNode:
@@ -87,6 +85,8 @@ YOU HAVE ESCAPED THE WILDERNESS.
 
 ######
 # TESTING AREA
+
+print("Once upon a time...")
 
 story_root = TreeNode(text_1)  # assign to this variable the value text_1
 choice_a = TreeNode(choice_a_text)
