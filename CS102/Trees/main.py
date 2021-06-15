@@ -24,8 +24,10 @@ class TreeNode:
             choice = int(input("Enter 1 or 2 to continue the story: "))
             while choice not in [1, 2]:
                 choice = int(input("Enter a valid choice 1 or 2: "))
-            story_node.add_child(choice)
-            story_node.choices.pop()
+            chosen_index = choice - 1
+            chosen_child = story_node.choices[chosen_index]
+            print(chosen_child.story_piece)
+            story_node = chosen_child
 
 
 
@@ -57,7 +59,7 @@ story_root = TreeNode(text_1) # assign to this variable the value text_1
 choice_a = TreeNode(choice_a_text)
 choice_b = TreeNode(choice_b_text)
 
-#print(story_root.story_piece)
+print(story_root.story_piece)
 
 story_root.add_child(choice_a)
 story_root.add_child(choice_b)
