@@ -13,7 +13,6 @@ def newton_sqrt(target_value, allowed_error): # at a starting point we assume th
 
     while abs(estimated_power - target_value) > allowed_error: # while the actual error is higher than the allowed     
         
-        count += 1
 
         if estimated_power > target_value: # if the power estimated is higher than then actual one
             upper_bound = estimated_sqrt # set the previous estimated sqrt to be the new upper bound
@@ -27,4 +26,4 @@ def newton_sqrt(target_value, allowed_error): # at a starting point we assume th
 
     return estimated_sqrt
 
-print(newton_sqrt(1000, 0.0001))
+print(newton_sqrt(2021, 0.0001))
