@@ -1,8 +1,12 @@
 def binary_search(my_list, target_value, count = 0):
     
+    # return value not found if list is empty
+    if len(my_list) == 0:
+        return "value not found"
+
     count += 1 # variable to count the number of iterations
     # define base case when the target list contains a single element
-    if len(my_list) <= 1: 
+    if len(my_list) == 1: 
         return my_list[0], count # return the element of the list and the counter variable
 
     # define the index to divide the list
@@ -20,9 +24,8 @@ def binary_search(my_list, target_value, count = 0):
     else:
         return(binary_search(left_half, target_value, count)) # recursive call in the left half of the list
     
+my_list = list(range(1,545))
+my_empty_list = []
+target_value = 456
 
-
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-target_value = 4
-
-print(binary_search(my_list, target_value))
+print(binary_search(my_empty_list, target_value))
