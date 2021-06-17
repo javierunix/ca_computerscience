@@ -5,14 +5,14 @@
 # is rejected and a new candidate is selected.
 
 def newton_sqrt(target_value, allowed_error): # at a starting point we assume that the sqrt has to be between 0 and the target value
-    count = 0 # variable for counting the number of iterations
+    
     lower_bound = 0 # first lower bound
     upper_bound = target_value # first upper bound
     estimated_sqrt = (lower_bound + upper_bound) / 2 # the estimated sqrt is the middle term
     estimated_power = estimated_sqrt ** 2 
 
-    while abs(estimated_power - target_value) > allowed_error: # while the actual error is higher than the allowed
-
+    while abs(estimated_power - target_value) > allowed_error: # while the actual error is higher than the allowed     
+        
         count += 1
 
         if estimated_power > target_value: # if the power estimated is higher than then actual one
@@ -25,6 +25,6 @@ def newton_sqrt(target_value, allowed_error): # at a starting point we assume th
             estimated_sqrt = (lower_bound + upper_bound) / 2
             estimated_power = estimated_sqrt ** 2
 
-    return estimated_sqrt, count
+    return estimated_sqrt
 
 print(newton_sqrt(1000, 0.0001))
