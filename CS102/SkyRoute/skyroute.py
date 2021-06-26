@@ -8,6 +8,8 @@ landmark_string = ""
 for letter, landmark in landmark_choices.items():
     landmark_string += "{0} - {1}\n".format(letter, landmark)
 
+stations_under_construction = ["Burrard", "Patterson"]
+
 # function with a greetings text for the user:
 def greet():
     print("Hi there and welcome to SkyRoute!")
@@ -17,6 +19,7 @@ def greet():
 def skyroute():
     greet()
     new_route()
+    goodbye()
 
 # This function handles the selected origin and destination
 def set_start_and_end(start_point, end_point):
@@ -66,9 +69,20 @@ def new_route(start_point = None, end_point = None):
     start_point, end_point = set_start_and_end(start_point, end_point)
 
     shortest_route = get_route(start_point, end_point)
-    shortest_route_string = '\n'.join(shortest_route)
 
-    print("The shortest metro route from {0} to {1} is:\n{2}".format(start_point, end_point, shortest_route_string))
+    if shortest_route:
+        shortest_route_string = '\n'.join(shortest_route)
+        print("The shortest metro route from {0} to {1} is:\n{2}".format(start_point, end_point, shortest_route_string))
+    
+    else: 
+        print("Unfortunately, there is currently no path between {0} and {1} due to maintenance.".format(start_point, end_point))
+
+    again = input("Would you like to see another route? Enter y/n: ")
+
+    show_landmarks()
+
+    if again == "y":
+        new_route(start_point, end_point)
 
 def get_route(start_point, end_point):
     start_stations = vc_landmarks[start_point]
@@ -88,4 +102,23 @@ def get_route(start_point, end_point):
 
     return shortest_route
 
-skyroute()
+def show_landmarks():
+    see_landmarks = input("Would you like to see the list of landmarks again? Enter y/n: ")
+
+    if see_landmarks == "y":
+        print(landmark_string)
+
+def goodbye():
+    print("Thanks for using SkyRoute!")
+
+def get_active_stations():
+    updated_metro = vc_metro
+
+    for station_under_construction in stations_under_construction:
+        for current_station, neighboring_stations in vc_metro.items():
+            if current_station != station_under_construction:
+                updated_metro[current_station] -= set(stations_under_construction)
+            else:
+                updated_metro[current_station] = set([])
+
+    return updated_metro
