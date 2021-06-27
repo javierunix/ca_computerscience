@@ -8,7 +8,7 @@ landmark_string = ""
 for letter, landmark in landmark_choices.items():
     landmark_string += "{0} - {1}\n".format(letter, landmark)
 
-stations_under_construction = ["Burrard", "Patterson"]
+stations_under_construction = ['Richmond-Brighouse', 'Waterfront']
 
 # function with a greetings text for the user:
 def greet():
@@ -93,7 +93,15 @@ def get_route(start_point, end_point):
     for start_station in start_stations:
 
         for end_station in end_stations:
-            route = bfs(vc_metro, start_station, end_station)
+            
+            metro_system = get_active_stations() if stations_under_construction else vc_metro
+
+            if stations_under_construction:
+                possible_route = dfs(metro_system, start_station, end_station)
+                if not possible_route:
+                    return None
+
+            route = bfs(metro_system, start_station, end_station)
 
             if route:
                 routes.append(route)
@@ -119,6 +127,9 @@ def get_active_stations():
             if current_station != station_under_construction:
                 updated_metro[current_station] -= set(stations_under_construction)
             else:
+                print(current_station)
                 updated_metro[current_station] = set([])
 
     return updated_metro
+
+skyroute()
