@@ -37,3 +37,23 @@ def build_tsp_graph(directed):
 
 # Define your functions below:
 
+# this function checks if all vertices as been visited
+def visited_all_vertices(visited_status):
+  for vertex in visited_status:
+    if visited_status[vertex] == 'unvisited':
+      return False
+  return True 
+
+def traveling_salesperson(graph):
+  final_path = "" # initialize final path as empty string
+
+  # create a dictionary that holds vertices and their statuses
+  visited_status = {vertex: 'unvisited' for vertex in graph.graph_dict} # all vertices start as unvisited
+
+  # select an initial vertex at random. Label it as the current_vertex, then mark it as visited and add it to the final path.
+  current_vertex = random.choice(list(graph.graph_dict))
+  visited_status[current_vertex] = "visited"
+  final_path += current_vertex
+
+  # check if all vertices has been visited
+  visited_all = visited_all_vertices(visited_status)    
