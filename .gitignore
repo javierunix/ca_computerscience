@@ -13,3 +13,4 @@ venv
 /CS102/Sorting/.DS_Store
 CS102/TreeTranversal/.vscode/settings.json
 CS102/DepthFirstTrees/.vscode/settings.json
+.DS_Store
