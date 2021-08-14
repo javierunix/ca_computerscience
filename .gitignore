@@ -14,3 +14,4 @@ venv
 CS102/TreeTranversal/.vscode/settings.json
 CS102/DepthFirstTrees/.vscode/settings.json
 .DS_Store
+CS102/Dijkstra/Project/test.py
