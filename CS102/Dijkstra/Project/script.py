@@ -44,7 +44,7 @@ def visited_all_vertices(visited_status):
       return False
   return True 
 
-def traveling_salesperson(graph):
+def travelling_salesman(graph):
   final_path = "" # initialize final path as empty string
 
   # create a dictionary that holds vertices and their statuses
@@ -56,4 +56,42 @@ def traveling_salesperson(graph):
   final_path += current_vertex
 
   # check if all vertices has been visited
-  visited_all = visited_all_vertices(visited_status)    
+  visited_all = visited_all_vertices(visited_status)
+
+  # while all vertices have not been visited create a dictionary
+  while not visited_all:
+    current_vertex_edges = graph.graph_dict[current_vertex].get_edges() # get all edges of current node
+    current_vertex_edge_weights = {}
+    for edge in current_vertex_edges:
+      current_vertex_edge_weights[edge] = graph.graph_dict[current_vertex].get_edge_weight(edge)
+    found_next_vertex = False # boolean to check if next vertex has been found
+    next_vertex = "" # initialize the name of the next vertex
+
+    while not found_next_vertex: # loop until next vertex is found
+      if not bool(current_vertex_edge_weights): # if the weights dictionary is empty, break the loop. 
+        break
+      # Select the minimum weight edge from the dictionary 
+      # and check whether it points to a vertex that has already been visited or not. 
+    
+      next_vertex = min(current_vertex_edge_weights, key= current_vertex_edge_weights.get)
+      # If unvisited, we have found our next_vertex. 
+      if visited_status[next_vertex] == "unvisited":
+        found_next_vertex = True
+      # If visited, pop the edge from our dictionary and continue searching.
+      else:
+        current_vertex_edge_weights.pop(next_vertex)
+    
+      if not bool(current_vertex_edge_weights): # if the weights dictionary is empty, break the loop. 
+        visited_all = True
+
+      else:
+        current_vertex = next_vertex
+        visited_status[current_vertex] = "visited"   
+        final_path += current_vertex 
+
+      visited_all = visited_all_vertices(visited_status)
+  
+  print(final_path)
+
+graph = build_tsp_graph(False)
+travelling_salesman(graph)
